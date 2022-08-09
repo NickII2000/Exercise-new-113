@@ -16,15 +16,24 @@ const phoneAnimation0 = images[0].animate([
 
 const phoneAnimation1 = images[1].animate([
     // keyframes
-    { transform: 'scaleX(1)' },
-    { transform: 'scaleX(-0,25)' },
-    { transform: 'scaleX(-0,5)' },
-    { transform: 'scaleX(-0,75)' },
-    { transform: 'scaleX(-1)' },
-    { transform: 'scaleX(-0,75)' },
-    { transform: 'scaleX(-0,5)' },
-    { transform: 'scaleX(-0,25)' },
-    { transform: 'scaleX(1)' }
+    // { transform: 'scaleX(1)' },
+    // { transform: 'scaleX(-0,25)' },
+    // { transform: 'scaleX(-0,5)' },
+    // { transform: 'scaleX(-0,75)' },
+    // { transform: 'scaleX(-1)' },
+    // { transform: 'scaleX(-0,75)' },
+    // { transform: 'scaleX(-0,5)' },
+    // { transform: 'scaleX(-0,25)' },
+    // { transform: 'scaleX(1)' }
+    { transform: 'scaleY(1)' },
+    { transform: 'scaleY(0,5)' },
+    { transform: 'scaleY(0)' },
+    { transform: 'scaleY(-0,5)' },
+    { transform: 'scaleY(-1)' },
+    { transform: 'scaleY(-0,5)' },
+    { transform: 'scaleY(0)' },
+    { transform: 'scaleY(0,5)' },
+    { transform: 'scaleY(1)' }
 ], {
     // timing options
     duration: 1000,
