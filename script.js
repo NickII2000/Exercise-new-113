@@ -11,5 +11,5 @@ const phoneAnimation = images[0].animate([
     { transform: 'translateY(0)' }
 ], {
     duration: 3000,
-    iteration: Infinity,
+    iteration: Infinity
 });
