@@ -33,7 +33,7 @@ const phoneAnimation1 = images[1].animate([
     { transform: 'scaleY(-0,5)' },
     { transform: 'scaleY(0)' },
     { transform: 'scaleY(0,5)' },
-    { transform: 'scaleY(1)' }
+    { transform: 'scaleY(1)' },
 ], {
     // timing options
     duration: 1000,
