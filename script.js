@@ -268,6 +268,7 @@ const composeWithArgs = (...fns) => fns.reduceRight((f, g) => (...args) => g(f(.
 
 
 //проверка второй фунции
+//1
 
 const add1 = function (a) { return a + 1 };
 const addAll3 = function (a, b, c) { return a + b + c };
@@ -275,3 +276,15 @@ const addAll3 = function (a, b, c) { return a + b + c };
 const composeWithArgs = (...fns) => fns.reduceRight((f, g) => (...args) => g(f(...args)));
 
 console.log(composeWithArgs(add1, addAll3)(1, 2, 3));  //=> Вернет 7
+
+//2
+
+const multiply20 = (price) => price * 20;
+const divide100 = (price) => price / 100;
+const normalizePrice = (price) => price.toFixed(2);
+const myDiscont1rub = (price) => --price;
+
+const composeWithArgs = (...fns) => fns.reduceRight((f, g) => (...args) => g(f(...args)));
+
+const discount = composeWithArgs(normalizePrice, myDiscont1rub, divide100, multiply20);
+console.log(discount(200.0));
