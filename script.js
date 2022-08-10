@@ -327,9 +327,12 @@ console.log(2);
 
 // Ex. 115
 
-setTimeout(() => console.log('timeout'));
+setTimeout(() => console.log('timeout'), 0); // макрозадача
 
 Promise.resolve()
-    .then(() => console.log('promise');
+    .then(() => console.log('promise-1')); // микрозадача
+
+Promise.resolve()
+    .then(() => console.log('promise-2')); // микрозадача
 
 console.log('code (sync)');
