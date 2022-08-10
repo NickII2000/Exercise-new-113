@@ -332,7 +332,19 @@ setTimeout(() => console.log('timeout'), 0); // макрозадача
 Promise.resolve()
     .then(() => console.log('promise-1')); // микрозадача
 
+queueMicrotask(() => console.log('wow - queueMicrotask'));
+
 Promise.resolve()
     .then(() => console.log('promise-2')); // микрозадача
 
 console.log('code (sync)');
+
+// () => {}
+// microtasks: then/catch/finally/await
+// render
+// () => {}
+// microtasks: then/catch/finally/await
+// render
+// () => {}
+
+
