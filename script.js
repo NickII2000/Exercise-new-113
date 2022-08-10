@@ -128,19 +128,20 @@ composeWithArgs(add1, addAll3)(1, 2, 3)  => Вернет 7
 const multiply20 = (price) => price * 20;
 const divide100 = (price) => price / 100;
 const normalizePrice = (price) => price.toFixed(2);
+const myDiscont1rub = (price) => --price;
 
 const compose = (...functions) => (x) => {
     let currentArgument = x;
-    console.log(typeof functions);
-    console.log(functions);
-    console.log(functions.length);
-    console.log(functions[0]);
+    // console.log(typeof functions);
+    // console.log(functions);
+    // console.log(functions.length);
+    // console.log(functions[0]);
     for (let i = functions.length - 1; i >= 0; i--) {
         currentArgument = functions[i](currentArgument);
     }
     return currentArgument;
 };
-const discount = compose(normalizePrice, divide100, multiply20);
+const discount = compose(normalizePrice, divide100, multiply20, myDiscont1rub);
 console.log(discount(200.0));
 
 
