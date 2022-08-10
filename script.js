@@ -125,6 +125,8 @@ composeWithArgs(add1, addAll3)(1, 2, 3)  => Вернет 7
 
 // */    
 
+// мой вариант
+
 const multiply20 = (price) => price * 20;
 const divide100 = (price) => price / 100;
 const normalizePrice = (price) => price.toFixed(2);
@@ -132,21 +134,51 @@ const myDiscont1rub = (price) => --price;
 
 const compose = (...functions) => (x) => {
     let currentArgument = x;
-    // console.log(typeof functions);
-    // console.log(functions);
-    // console.log(functions.length);
-    // console.log(functions[0]);
     for (let i = functions.length - 1; i >= 0; i--) {
         currentArgument = functions[i](currentArgument);
     }
     return currentArgument;
 };
-const discount = compose(normalizePrice, divide100, multiply20, myDiscont1rub);
+const discount = compose(normalizePrice, myDiscont1rub, divide100, multiply20);
 console.log(discount(200.0));
 
+// мой вариант без стрелочных функций
 
+const multiply20 = (price) => price * 20;
+const divide100 = (price) => price / 100;
+const normalizePrice = (price) => price.toFixed(2);
+const myDiscont1rub = (price) => --price;
 
-// const compose = (...fns) => (x) => fns.reduceRight((res, fn) => fn(res), x);
+const compose = function (...functions) {
+    return function (x) {
+        let currentArgument = x;
+        for (let i = functions.length - 1; i >= 0; i--) {
+            currentArgument = functions[i](currentArgument);
+        }
+        return currentArgument;
+    };
+};
+const discount = compose(normalizePrice, myDiscont1rub, divide100, multiply20);
+console.log(discount(200.0));
+
+// вариант мастера
+
+const multiply20 = (price) => price * 20;
+const divide100 = (price) => price / 100;
+const normalizePrice = (price) => price.toFixed(2);
+const myDiscont1rub = (price) => --price;
+
+const compose = (...fns) => (x) => fns.reduceRight((res, fn) => fn(res), x);
+
+const discount = compose(normalizePrice, myDiscont1rub, divide100, multiply20);
+console.log(discount(200.0));
+
+// вариант мастера без стрелочных функций
+
+const multiply20 = (price) => price * 20;
+const divide100 = (price) => price / 100;
+const normalizePrice = (price) => price.toFixed(2);
+const myDiscont1rub = (price) => --price;
 
 const compose = function (...fns) {
     return function (x) {
@@ -154,8 +186,10 @@ const compose = function (...fns) {
     };
 };
 
-const discount = compose(normalizePrice, divide100, multiply20);
+const discount = compose(normalizePrice, myDiscont1rub, divide100, multiply20);
 console.log(discount(200.0));
+
+
 
 
 
