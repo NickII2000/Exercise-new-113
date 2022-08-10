@@ -195,8 +195,8 @@ console.log(discount(200.0));
 // Справились с первой частью ? Хорошо, давайте усложним 🙂
 // А теперь напишите функцию композиции composeWithArgs, которая принимает сколько угодно аргументов в начале.Пример:
 
-const add1 = function (a) { return a + 1 }
-const addAll3 = function (a, b, c) { return a + b + c }
+const add1 = function (a) { return a + 1 };
+const addAll3 = function (a, b, c) { return a + b + c };
 // composeWithArgs(add1, addAll3)(1, 2, 3)  => Вернет 7
 
 const composeWithArgs = (...fns) => (...x) => fns.reduceRight((res, fn) => {
@@ -219,7 +219,7 @@ console.log(composeWithArgs(add1, addAll3)(1, 2, 3));  //=> Вернет 7
 
 // Усложненное задание! Мой вариант.
 
-const add1 = function (a) { return a + 1 }
+const add1 = function (a) { return a + 1 };
 const addAll3 = function (a, b, c) { return a + b + c };
 
 const composeWithArgs = function (...functions) {
@@ -235,5 +235,20 @@ const composeWithArgs = function (...functions) {
         return currentArgument;
     };
 };
+
+console.log(composeWithArgs(add1, addAll3)(1, 2, 3));  //=> Вернет 7
+
+// Усложненное задание! Мой вариант - 2.
+
+const add1 = function (a) { return a + 1 };
+const addAll3 = function (a, b, c) { return a + b + c };
+
+const composeWithArgs = (...fns) => (...x) => fns.reduceRight((res, fn) => {
+    if (Array.isArray(res)) {
+        return fn(...res);
+    } else {
+        return fn(res);
+    }
+}, x);
 
 console.log(composeWithArgs(add1, addAll3)(1, 2, 3));  //=> Вернет 7
