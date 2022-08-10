@@ -305,13 +305,22 @@
 
 // console.log(2);
 
+
+// 'use strict';
+
+// let k = 0;
+// function count() {
+//     for (let i = 0; i < 1e9; i++) {
+//         k++;
+//     }
+//     alert(`done, k = ${k}`);
+// }
+// count();
+
 'use strict';
 
-let k = 0;
-function count() {
-    for (let i = 0; i < 1e8; i++) {
-        k++;
-    }
-    alert(`done, k = ${k}`);
-}
-count();
+setTimeout(() => {
+    console.log(1);
+}, 0);
+
+console.log(2);
