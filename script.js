@@ -252,3 +252,10 @@ const composeWithArgs = (...fns) => (...x) => fns.reduceRight((res, fn) => {
 }, x);
 
 console.log(composeWithArgs(add1, addAll3)(1, 2, 3));  //=> Вернет 7
+
+// Проба ...
+const addAll3 = function (a, b, c) { return a + b + c };
+console.log(addAll3(...[10, 20, 30]));
+
+const addAll = (...x) => x.reduce((sum, item) => sum + item, 0);
+console.log(addAll(...[10, 20, 30, 40, 50]));
