@@ -129,17 +129,24 @@ const multiply20 = (price) => price * 20;
 const divide100 = (price) => price / 100;
 const normalizePrice = (price) => price.toFixed(2);
 
-// const compose = (...functions) => (x) => {
-//     let currentArgument = x;
-//     console.log(typeof functions);
-//     console.log(functions);
-//     for (let i = length.functions; i >= 0; i--) {
-//         currentArgument = functions[i](currentArgument);
-//     }
-//     return currentArgument;
-// };
+const compose = (...functions) => (x) => {
+    let currentArgument = x;
+    console.log(typeof functions);
+    console.log(functions);
+    console.log(functions.length);
+    console.log(functions[0]);
+    for (let i = functions.length - 1; i >= 0; i--) {
+        currentArgument = functions[i](currentArgument);
+    }
+    return currentArgument;
+};
+const discount = compose(normalizePrice, divide100, multiply20);
+console.log(discount(200.0));
+
+
 
 // const compose = (...fns) => (x) => fns.reduceRight((res, fn) => fn(res), x);
+
 const compose = function (...fns) {
     return function (x) {
         return fns.reduceRight(function (res, fn) { return fn(res) }, x)
