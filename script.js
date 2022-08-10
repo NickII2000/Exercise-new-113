@@ -182,7 +182,7 @@ const myDiscont1rub = (price) => --price;
 
 const compose = function (...fns) {
     return function (x) {
-        return fns.reduceRight(function (res, fn) { return fn(res) }, x)
+        return fns.reduceRight(function (res, fn) { return fn(res) }, x);
     };
 };
 
@@ -197,8 +197,43 @@ console.log(discount(200.0));
 
 const add1 = function (a) { return a + 1 }
 const addAll3 = function (a, b, c) { return a + b + c }
-composeWithArgs(add1, addAll3)(1, 2, 3)  => Вернет 7
+// composeWithArgs(add1, addAll3)(1, 2, 3)  => Вернет 7
+
+const composeWithArgs = (...fns) => (...x) => fns.reduceRight((res, fn) => {
+    console.log(fn);
+    console.log(res);
+    if (Array.isArray(res)) {
+        console.log(fn(...res));
+        console.log('--------');
+        return fn(...res);
+    } else {
+        console.log(fn(res));
+        console.log('--------');
+        return fn(res);
+    }
+}, x);
+// const compose = (...fns) => (x) => fns.reduceRight((res, fn) => fn(res), x);
+
+console.log(composeWithArgs(add1, addAll3)(1, 2, 3));  //=> Вернет 7
 
 
+// Усложненное задание! Мой вариант.
 
-const composeWithArgs = () => { };
+const add1 = function (a) { return a + 1 }
+const addAll3 = function (a, b, c) { return a + b + c };
+
+const composeWithArgs = function (...functions) {
+    return function (...x) {
+        let currentArgument = x;
+        for (let i = functions.length - 1; i >= 0; i--) {
+            if (i === functions.length - 1) {
+                currentArgument = functions[i](...currentArgument);
+            } else {
+                currentArgument = functions[i](currentArgument);
+            }
+        }
+        return currentArgument;
+    };
+};
+
+console.log(composeWithArgs(add1, addAll3)(1, 2, 3));  //=> Вернет 7
