@@ -289,7 +289,7 @@ const composeWithArgs = (...fns) => fns.reduceRight((f, g) => (...args) => g(f(.
 const discount = composeWithArgs(normalizePrice, myDiscont1rub, divide100, multiply20);
 console.log(discount(200.0));
 
-Ex. 114
+// Ex. 114
 
 'use strict';
 
@@ -324,3 +324,12 @@ setTimeout(() => {
 }, 0);
 
 console.log(2);
+
+// Ex. 115
+
+setTimeout(() => console.log('timeout'));
+
+Promise.resolve()
+    .then(() => console.log('promise');
+
+console.log('code (sync)');
